@@ -7,10 +7,10 @@ database= {
 
 @app.route("/")
 def index():
-    print(request.args)
-    print(request.args["id"])
-    # print(request.args.get("searchTermtyr"))
-    print(request.args.get("searchTermtyr","can not get"))
+    # print(request.args)
+    # print(request.args["id"])
+    # # print(request.args.get("searchTermtyr"))
+    # print(request.args.get("searchTermtyr","can not get"))
     
     
     
@@ -44,7 +44,40 @@ def get_an_article_buy_id(id):
         if article["id"]==id:
             return {"data":article,"message":"Created article successfully"}
     return {"data":None,"message":"No such article"}
-    
+
+
+
+@app.route("/articles/<int:id>", methods =["DELETE","PUT"])
+def del_put_article(id):
+    method = request.method
+
+    print(method)
+    articles= database.get("Articles")
+    article = next((a for a in articles if a["id"] == id), None)
+
+    # if not article:
+    #     return {"data": None, "message":"Article not found"}
+
+
+    if method == "DELETE":
+        articles.remove(article)
+        return {"data": None, "message": "Article remove successfully"}
+        
+    body = request.json
+    body["id"] = id
+    articles.append(body)
+    return {"data": body, "message":"Article updated successfully"}
+
+
+
+
+
+
+
+# def sortList(numbers:list):
+#     numbers.sort()
+#     return numbers
+
 
         
 
