@@ -37,9 +37,17 @@ def get_all_or_create_an_article():
     database["Articles"].append(body)
     return {"data":body,"message":"Created article successfully"}
 
+# @app.route("/articles/<int:id>")
+# def get_an_article_buy_id(id):
+#     articles = database.get("Articles")
+#     for article in articles:
+#         if article["id"]==id:
+#             return {"data":article,"message":"Created article successfully"}
+#     return {"data":None,"message":"No such article"}
 @app.route("/articles/<int:id>")
 def get_an_article_buy_id(id):
-    articles = database.get("Articles")
+    articles= tuple(database.get("Articles"))
+    
     for article in articles:
         if article["id"]==id:
             return {"data":article,"message":"Created article successfully"}
@@ -52,8 +60,11 @@ def get_an_article_buy_id(id):
 
 
 
+# def sortList(numbers):
+#     numbers.sort()
+#     return numbers
 
-
+# sortList()
 
 
 if __name__ == "__main__":
