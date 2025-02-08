@@ -1,0 +1,25 @@
+resource
+
+users
+- name 
+- email
+- password
+-isVerified
+-role: user, admin
+- posts
+- followers
+- followings
+
+
+posts
+-text
+-imageUrl
+-videoUrl
+-status: draft, published
+-isDeleted
+-comments
+-likes
+
+
+
+
