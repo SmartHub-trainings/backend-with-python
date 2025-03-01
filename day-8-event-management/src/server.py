@@ -42,10 +42,10 @@ def upload_file_handler():
         "url": result.get("secure_url"),
         "folder": result['folder']
     }
-    
+    "routes>controller>service>utils"
     
     # return {"message":"File uploaded successfully"}
-
+    
 
 
 if __name__ == "__main__":
